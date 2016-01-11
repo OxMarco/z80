@@ -12,4 +12,31 @@ jp start
 
 ; this program generates a rising triangle wave
 
+start:
+in A, (02)
+inc A
+out (00), A
+out (01), A
+jp start
 
+; this program generates a falling triangle wave
+
+start:
+in A, (02)
+dec A
+out (00), A
+out (01), A
+jp start
+
+; this program generates a triangular wave
+in A, (02)
+up:
+  inc A
+  out (00), A
+  cp oxFF
+  jpz up
+  down:
+    dec A
+    out (00), A
+    jpnz down
+jp up
